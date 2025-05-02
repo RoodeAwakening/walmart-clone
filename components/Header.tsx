@@ -1,5 +1,8 @@
-import { Image, Link } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
+import { Search } from "lucide-react";
 
 function Header() {
   return (
@@ -12,6 +15,12 @@ function Header() {
           height={150}
         />
       </Link>
+      <form>
+        <input type="text" placeholder="Search Everything..."/>
+        <Button className="rounded-full h-10">
+            <Search />
+        </Button>
+      </form>
     </header>
   );
 }
