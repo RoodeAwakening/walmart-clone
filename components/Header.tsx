@@ -1,8 +1,10 @@
 "use client";
+// recommended to break out the search bar into a separate component and
+// then use the "use client" only there
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { FormEvent } from "react";
 import { Button } from "./ui/button";
 import {
   Grid2X2,
@@ -14,17 +16,26 @@ import {
 } from "lucide-react";
 
 function Header() {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const input = e.currentTarget.searchInput.value;
+  };
+
   return (
     <header className="flex flex-col md:flex-row bg-walmart px-10 py-7 space-x-5">
       <Link href="/" className="mb-5 md:mb-0">
         <Image
-          src="https://links.papareact.com/yur"
+          src="https://i.imgur.com/5V4wehM.png"
           alt="Walmart Logo"
           width={150}
           height={150}
         />
       </Link>
-      <form className="flex items-center bg-white rounded-full w-full flex-1">
+      <form
+        onSubmit={handleSubmit}
+        name="searchInput"
+        className="flex items-center bg-white rounded-full w-full flex-1"
+      >
         <input
           type="text"
           placeholder="Search Everything..."
