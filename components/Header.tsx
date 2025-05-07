@@ -4,7 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Grid2X2, Heart, LayoutGrid, Search, ShoppingCart, User } from "lucide-react";
+import {
+  Grid2X2,
+  Heart,
+  LayoutGrid,
+  Search,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 
 function Header() {
   return (
