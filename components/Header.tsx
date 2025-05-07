@@ -27,8 +27,8 @@ function Header() {
   };
 
   return (
-    <header className="flex flex-col md:flex-row bg-walmart px-10 py-7 space-x-5">
-      <Link href="/" className="mb-5 md:mb-0">
+    <header className="flex flex-col lg:flex-row bg-walmart px-10 py-7 space-x-5">
+      <Link href="/" className="mb-5 lg:mb-0 flex justify-center">
         <Image
           src="https://i.imgur.com/5V4wehM.png"
           alt="Walmart Logo"
@@ -50,7 +50,7 @@ function Header() {
           <Search className="text-black" />
         </Button>
       </form>
-      <div className="flex space-x-5 mt-5 md:mt-0 justify-evenly">
+      <div className="flex space-x-5 mt-5 lg:mt-0 justify-evenly">
         <Link
           href={"/"}
           className="flex text-white font-bold items-center space-x-2 text-sm"

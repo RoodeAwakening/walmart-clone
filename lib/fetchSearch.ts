@@ -1,3 +1,5 @@
+import { Result } from "@/typings/searchTypings";
+
 async function fetchSearch(searchTerm: string) {
     const username = process.env.OXYLABS_USERNAME;
     const password = process.env.OXYLABS_PASSWORD;
@@ -19,8 +21,8 @@ async function fetchSearch(searchTerm: string) {
         },
     }).then((res) => res.json())
       .then((data) => {
-        if (data.resluts.length === 0) return;
-        const result: Result = data.resluts[0];
+        if (data?.results.length === 0) return;
+        const result: Result = data.results[0];
         return result
     })
     .catch((error) => {
@@ -28,3 +30,5 @@ async function fetchSearch(searchTerm: string) {
     })
     return response;
 }
+
+export default fetchSearch;
