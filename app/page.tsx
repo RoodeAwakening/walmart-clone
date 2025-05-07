@@ -1,3 +1,5 @@
+import GridOption from "@/components/ui/GridOption";
+
 export default function Home() {
   return (
     <main className="">
