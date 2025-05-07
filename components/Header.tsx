@@ -14,11 +14,16 @@ import {
   ShoppingCart,
   User,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 function Header() {
+    const router = useRouter();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const input = e.currentTarget.searchInput.value;
+    console.log('=======', input);
+    router.push(`/search?q=${input}`);
   };
 
   return (
@@ -33,11 +38,11 @@ function Header() {
       </Link>
       <form
         onSubmit={handleSubmit}
-        name="searchInput"
         className="flex items-center bg-white rounded-full w-full flex-1"
       >
         <input
           type="text"
+          name="searchInput"
           placeholder="Search Everything..."
           className="flex-1 px-4 rounded-l-full outline-none placeholder:text-sm"
         />
