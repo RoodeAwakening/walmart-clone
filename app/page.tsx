@@ -3,11 +3,11 @@ import GridOption from "@/components/ui/GridOption";
 export default function Home() {
   return (
     <main className="">
-      <div>
+      <div className="grid grid-cols-1 grid-flow-row-dense">
         <GridOption
           title="Sweet gifts for less"
           image="https://links.papareact.com/ldy"
-          className="bg-pink-200 h-full md:h-32"
+          className="bg-pink-200 h-full"
         />
         <GridOption
           title="Shop Wardrobe"
