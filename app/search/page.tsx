@@ -1,14 +1,12 @@
 type Props = {
-    searchParams: {
-        q: string;
-    }
+  searchParams: {
+    q: string;
+  };
+};
+
+async function SearchPage({ searchParams: { q } }: Props) {
+  const results = await fetchSearch(q);
+  return <div>SearchPage</div>;
 }
 
-function SearchPage({searchParams: {q}}: Props) {
-    console.log(q)
-  return (
-    <div>SearchPage</div>
-  )
-}
-
-export default SearchPage
+export default SearchPage;

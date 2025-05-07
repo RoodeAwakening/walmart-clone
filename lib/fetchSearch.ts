@@ -1,0 +1,30 @@
+async function fetchSearch(searchTerm: string) {
+    const username = process.env.OXYLABS_USERNAME;
+    const password = process.env.OXYLABS_PASSWORD;
+
+    const newUrl = new URL(`https://www.walmart.com/search?q=${searchTerm}`);
+    const body = {
+        source: 'universal_ecommerce',
+        url: newUrl.toString(),
+        country: 'United States',
+        parse: true,
+    }
+
+    const response = fetch("https://realtime.oxylabs.io/v1/queries", {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${Buffer.from(`${username}:${password}`).toString("base64")}`,
+        },
+    }).then((res) => res.json())
+      .then((data) => {
+        if (data.resluts.length === 0) return;
+        const result: Result = data.resluts[0];
+        return result
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    })
+    return response;
+}
