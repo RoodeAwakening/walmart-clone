@@ -75,6 +75,7 @@ export interface General {
   product_id: string;
   out_of_stock: boolean;
   section_title: string;
+  badge: string;
 }
 
 export interface Fulfillment {
