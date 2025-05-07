@@ -19,6 +19,7 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+			walmart: "#0171DC",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
