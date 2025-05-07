@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Grid2X2, Heart, LayoutGrid, Search, User } from "lucide-react";
+import { Grid2X2, Heart, LayoutGrid, Search, ShoppingCart, User } from "lucide-react";
 
 function Header() {
   return (
@@ -58,6 +58,16 @@ function Header() {
           <div>
             <p className="text-xs font-extralight">Sign In</p>
             <p>Account</p>
+          </div>
+        </Link>
+        <Link
+          href={"/"}
+          className="flex text-white font-bold items-center space-x-2 text-sm"
+        >
+          <ShoppingCart size={20} />
+          <div>
+            <p className="text-xs font-extralight">No Items</p>
+            <p>$0.00</p>
           </div>
         </Link>
       </div>
