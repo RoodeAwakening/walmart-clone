@@ -1,8 +1,8 @@
 import { Organic } from "@/typings/searchTypings";
-import { Badge } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Badge } from "./ui/badge";
 
 function Product({ product }: { product: Organic }) {
   return (
