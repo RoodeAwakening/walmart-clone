@@ -30,19 +30,17 @@ export interface ProductResult {
     price: number | null;
   };
 
-    /** Badge / flag booleans */
-    twoDayShipping: boolean;
-    freeShipping: boolean;
-    freeShippingPlus: boolean;
-    outOfStock: boolean;
-    sponsored: boolean;
-    badge?: string;
+  /** Badge / flag booleans */
+  twoDayShipping: boolean;
+  freeShipping: boolean;
+  freeShippingPlus: boolean;
+  outOfStock: boolean;
+  sponsored: boolean;
+  badge?: string;
 
   /** Links */
   url: string;
   serpapiUrl: string;
-
-  
 }
 
 export interface SearchResponse {

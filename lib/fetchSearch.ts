@@ -8,7 +8,7 @@ import { getJson } from "serpapi";
  */
 export default async function fetchSearch(
   query: string,
-  page = 1,
+  page = 1
 ): Promise<SearchResponse> {
   const api_key = process.env.SERP_API!; // ← make sure this is in .env
   const json = await getJson({
@@ -46,12 +46,11 @@ export default async function fetchSearch(
         /* Price */
         price: p.primary_offer?.offer_price ?? null,
         currency: p.primary_offer?.currency ?? null,
-        pricePerUnit:
-          p.price_per_unit && {
-            amount: p.price_per_unit.extracted_price,
-            currency: p.price_per_unit.currency,
-            unit: p.price_per_unit.unit,
-          },
+        pricePerUnit: p.price_per_unit && {
+          amount: p.price_per_unit.extracted_price,
+          currency: p.price_per_unit.currency,
+          unit: p.price_per_unit.unit,
+        },
 
         /* Social proof */
         rating: p.rating ?? 0,
@@ -76,8 +75,7 @@ export default async function fetchSearch(
     }) ?? [];
 
   return {
-    totalResults:
-      json.search_information?.total_results ?? products.length,
+    totalResults: json.search_information?.total_results ?? products.length,
     products,
   };
 }

@@ -7,7 +7,6 @@ import { Badge } from "./ui/badge";
 function Product({ product }: { product: ProductResult }) {
   const { thumbnail, title, price, currency, rating, reviews, badge, url } =
     product;
-    console.log('badge----', badge)
 
   return (
     <Link
@@ -28,12 +27,10 @@ function Product({ product }: { product: ProductResult }) {
       {badge && <Badge className="w-fit absolute top-2 right-2">{badge}</Badge>}
 
       <p className="font-light">
-        {title.length > 70
-          ? title.slice(0, 70) + "..."
-          : title}{" "}
+        {title.length > 70 ? title.slice(0, 70) + "..." : title}{" "}
       </p>
 
-      {(reviews > 1) && (
+      {reviews > 1 && (
         <p className="text-yellow-500 text-sm">
           {rating} ★ <span className="text-gray-400 ml-2">{reviews}</span>
         </p>
