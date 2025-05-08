@@ -1,5 +1,7 @@
 import Product from "@/components/Product";
-import fetchSearch from "@/lib/fetchSearch";
+import fetchSearch, {
+    ProductResult,
+  } from "@/lib/fetchSearch";
 
 type Props = {
   searchParams: {
@@ -8,16 +10,16 @@ type Props = {
 };
 
 async function SearchPage({ searchParams: { q } }: Props) {
-  const results = await fetchSearch(q);
-  console.log('------------>', results?.content.results)
+const { totalResults, products } = await fetchSearch(q);
+//   const results = await fetchSearch(q);
   return (
     <div className="p-10">
       <h1 className="text-3xl font-bold mb-2">Results For {q}</h1>
-      <h2>({results?.content?.page_details?.total_results} results)</h2>
+      <h2>({totalResults.toLocaleString()} results)</h2>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {results?.content.results.map(product => (
-            <li key={product.general.product_id}>
+        {products.map(product => (
+            <li key={product.id}>
               <Product 
               product={product}
               />
