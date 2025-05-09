@@ -5,15 +5,16 @@ import React from "react";
 import { Badge } from "./ui/badge";
 
 function Product({ product }: { product: ProductResult }) {
-  const { thumbnail, title, price, currency, rating, reviews, badge, url } =
+  const { thumbnail, title, price, currency, rating, reviews, badge, url, serpapiUrl } =
     product;
-
   return (
     <Link
       className="flex flex-col relative border rounded-md h-full p-5 hover:shadow-lg"
       href={{
-        pathname: "/product:",
-        query: { url },
+        pathname: "/product",
+        query: {
+          url: serpapiUrl,
+        }
       }}
     >
       <Image

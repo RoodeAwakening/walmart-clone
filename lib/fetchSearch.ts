@@ -1,4 +1,3 @@
-// lib/fetchSearch.ts
 import { ProductResult, SearchResponse } from "@/typings/searchTypings";
 import { getJson } from "serpapi";
 
@@ -10,7 +9,7 @@ export default async function fetchSearch(
   query: string,
   page = 1
 ): Promise<SearchResponse> {
-  const api_key = process.env.SERP_API!; // ← make sure this is in .env
+  const api_key = process.env.SERP_API!;
   const json = await getJson({
     engine: "walmart",
     query,
