@@ -1,3 +1,10 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import fetchProduct from "@/lib/fetchProduct";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -18,7 +25,7 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
 
   return (
     <div>
-      <div>
+      <div className="hidden lg:inline space-y-4">
         {product.images.map((image: string, index: number) => (
           <Image
             key={index}
@@ -30,6 +37,15 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
           />
         ))}
       </div>
+      <Carousel>
+        <CarouselContent>
+          <CarouselItem>...</CarouselItem>
+          <CarouselItem>...</CarouselItem>
+          <CarouselItem>...</CarouselItem>
+          <CarouselPrevious />
+          <CarouselNext />
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 }
