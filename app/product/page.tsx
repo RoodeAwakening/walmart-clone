@@ -21,12 +21,12 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
     return notFound();
   }
 
-  console.log("images", product.images);
+  //   console.log("images", product.images);
 
   return (
     <div>
       <div className="hidden lg:inline space-y-4">
-        {product.images.map((image: string, index: number) => (
+        {product?.images?.map((image: string, index: number) => (
           <Image
             key={index}
             src={image}
@@ -39,12 +39,24 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
       </div>
       <Carousel>
         <CarouselContent>
-          <CarouselItem>...</CarouselItem>
-          <CarouselItem>...</CarouselItem>
-          <CarouselItem>...</CarouselItem>
-          <CarouselPrevious />
-          <CarouselNext />
+          {product?.images?.map((image: string, index: number) => (
+            <CarouselItem key={index}>
+              <div className="p-1">
+                <div className="flex aspect-square items-center justify-center p-2 relative">
+                    <Image
+                        key={index}
+                        src={image}
+                        alt={product.title + " image " + index}
+                        width={400}
+                        height={400}
+                    />
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
     </div>
   );
