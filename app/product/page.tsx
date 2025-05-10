@@ -24,6 +24,7 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
 
   //   console.log("images", product.images);
 
+  console.log("categories", product);
   return (
     <div className="flex p-4 lg:p-10 flex-col lg:flex-row w-full">
       <div className="hidden lg:inline space-y-4">
@@ -65,16 +66,39 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
       <div className=" flex-1 border rounded-md w-full p-5 space-y-5">
         <h1 className="md:text-3xl font-bold">{product.title}</h1>
         <div className="space-x-2">
-          {product.categories.map((crumb: { name: string; url: string }, index: number) => (
-            <Badge
-            key={crumb.name + index}
-            className={crumb.name}
-            variant="outline"
-            >
+          {product.categories.map(
+            (crumb: { name: string; url: string }, index: number) => (
+              <Badge
+                key={crumb.name + index}
+                className={crumb.name}
+                variant="outline"
+              >
                 {crumb.name}
-            </Badge>
-          ))}
+              </Badge>
+            )
+          )}
         </div>
+
+        <h3 className="font-bold text-xl">About this item</h3>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: product?.detailed_description_html,
+          }}
+          className="prose prose-sm max-w-none [&>ul]:list-disc [&>ul]:pl-5"
+        />
+
+        {product?.rating && (
+            <p className="text-yellow-500 text-sm">
+              {product.rating} ★{" "}
+              <span className="text-gray-400 ml-2">{product.reviews} reviews</span>
+            </p>
+            )}
+
+            <p className="text-2xl font-bold mt-2">
+            {product?.price_map.was_price.currencyUnit} {product?.price_map.price}
+            </p>
+
+        {/* add to cart button */}
       </div>
     </div>
   );
