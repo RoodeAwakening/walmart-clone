@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import {
   Carousel,
   CarouselContent,
@@ -24,7 +25,7 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
   //   console.log("images", product.images);
 
   return (
-    <div>
+    <div className="flex p-4 lg:p-10 flex-col lg:flex-row w-full">
       <div className="hidden lg:inline space-y-4">
         {product?.images?.map((image: string, index: number) => (
           <Image
@@ -37,19 +38,22 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
           />
         ))}
       </div>
-      <Carousel>
+      <Carousel
+        opts={{ loop: true }}
+        className="w-3/5 mb-10 lg:mb-0 lg:w-1/3 self-start flex items-center max-w-xl mx-auto lg:mx-20"
+      >
         <CarouselContent>
           {product?.images?.map((image: string, index: number) => (
             <CarouselItem key={index}>
               <div className="p-1">
                 <div className="flex aspect-square items-center justify-center p-2 relative">
-                    <Image
-                        key={index}
-                        src={image}
-                        alt={product.title + " image " + index}
-                        width={400}
-                        height={400}
-                    />
+                  <Image
+                    key={index}
+                    src={image}
+                    alt={product.title + " image " + index}
+                    width={400}
+                    height={400}
+                  />
                 </div>
               </div>
             </CarouselItem>
@@ -58,6 +62,20 @@ export default async function ProductPage({ searchParams: { url } }: Props) {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <div className=" flex-1 border rounded-md w-full p-5 space-y-5">
+        <h1 className="md:text-3xl font-bold">{product.title}</h1>
+        <div className="space-x-2">
+          {product.categories.map((crumb: { name: string; url: string }, index: number) => (
+            <Badge
+            key={crumb.name + index}
+            className={crumb.name}
+            variant="outline"
+            >
+                {crumb.name}
+            </Badge>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
